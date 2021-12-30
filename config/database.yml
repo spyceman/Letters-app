@@ -14,6 +14,7 @@ development:
   host: ENV['DATABASE_HOST']
   port: ENV['DATABASE_PORT']
 
+
   # Schema search path. The server defaults to $user,public
   #schema_search_path: myapp,sharedapp,public
 
@@ -33,6 +34,7 @@ test:
   password: ENV['DATABASE_PASSWORD']
   host: ENV['DATABASE_HOST']
   port: ENV['DATABASE_PORT']
+
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -61,3 +63,4 @@ production:
   password: ENV['DATABASE_PASSWORD']
   host: ENV['DATABASE_HOST']
   port: ENV['DATABASE_PORT']
+
