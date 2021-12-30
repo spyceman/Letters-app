@@ -1,0 +1,11 @@
+<% @weekly_letters.each do |letter| %>
+  <%= @letter.title %>
+===============================================
+Name:  <%= @letter.name %>
+Phone: <%= @letter.phone %>
+Email: <%= @letter.email %>
+===============================================
+Description: <%= @letter.description %>.
+===============================================
+Files: <%= @letter.files %>
+<% end %>
