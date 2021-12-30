@@ -1,5 +1,4 @@
 class LettersController < ApplicationController
-    before_action :find_letter, except: [:create, :index]
 
     def create 
         @letter = Letter.new(letter_params)
@@ -13,30 +12,9 @@ class LettersController < ApplicationController
          end
     end
 
-    def show
-        render json: @letter
-    end
-
-    def index
-        @letters = Letter.all
-        render json: @letters
-    end
-
-    def update 
-        @letter.update(letter_params)
-    end
-
-    def destroy 
-        @letter.destroy
-    end
-
-    private
+    private 
 
     def letter_params
         params.require(:letter).permit(:name, :phone, :title, :description, :files, :email)
-    end
-
-    def find_letter
-        @letter = Letter.find(params[:id])
     end
 end

@@ -1,4 +1,6 @@
 class LetterMailer < ApplicationMailer
+  default from: 'notifications@example.com'
+
     def letter_email
       @letter = params[:letter]
       @url  = 'http://example.com/'
@@ -7,6 +9,6 @@ class LetterMailer < ApplicationMailer
       encoding: 'SpecialEncoding',
       content: encoded_content
       }
-      mail(from: @letter.email, to: email_address_with_name('sales@sgsoft.io', @letter.name), subject: @letter.title)
+      mail(to: email_address_with_name('sales@sgsoft.io', @letter.name), subject: 'New Application')
     end
 end
