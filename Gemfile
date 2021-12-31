@@ -46,6 +46,10 @@ group :development do
   # gem "spring"
 end
 
+group :test do
+  gem "rspec-rails", "~> 5.0"
+end
+
 gem "pg", "~> 1.2"
 
 gem "sidekiq", "~> 6.3"
@@ -56,6 +60,6 @@ gem "whenever", "~> 1.0"
 
 gem "dotenv", "~> 2.7"
 
-gem "rspec-rails", "~> 5.0"
+
 
 
