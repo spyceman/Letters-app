@@ -1,11 +1,9 @@
 <% @weekly_letters.each do |letter| %>
-  <%= @letter.title %>
+  <%= letter.title %>
 ===============================================
-Name:  <%= @letter.name %>
-Phone: <%= @letter.phone %>
-Email: <%= @letter.email %>
+Name:  <%= letter.name %>
+Phone: <%= letter.phone %>
+Email: <%= letter.email %>
 ===============================================
-Description: <%= @letter.description %>.
-===============================================
-Files: <%= @letter.files %>
+Description: <%= letter.description %>.
 <% end %>

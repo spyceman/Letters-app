@@ -1,0 +1,9 @@
+<% @weekly_letters.each do |letter| %>
+  <h2><%= letter.title %></h2>
+  ===============================================
+  <p>Name:  <%= letter.name %></p>
+  <p>Phone: <%= letter.phone %></p>
+  <p>Email: <%= letter.email %></p>
+  ===============================================
+  <p>Description: <%= letter.description %>.</p>
+<% end %>

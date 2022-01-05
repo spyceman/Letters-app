@@ -8,7 +8,7 @@ RSpec.describe 'Letters', type: :request do
         phone: '1234567891011123',
         title: 'Lorem ipsum dolor sit amet, consectetuer adipiscin',
         description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean m',
-        email: 'example@gmail.com',
+        email: 'example@gmail.com'
       }
     end
 
@@ -26,70 +26,93 @@ RSpec.describe 'Letters', type: :request do
       letter = Letter.new(attributes)
       post '/letters', params: letter
       json = JSON.parse(response.body)
-      expect(json).to eq(letter)
+      expect(json).to eq('Successfully created')
     end
 
     it 'is invalid without a name' do
       letter = Letter.new(missing_name)
       post '/letters', params: letter
       json = JSON.parse(response.body)
-      expect(json).to eq(letter)
+      expect(json).to eq("name": [
+                           "can't be blank"
+                         ])
     end
 
     it 'is invalid without a phone' do
       letter = Letter.new(missing_phone)
       post '/letters', params: letter
       json = JSON.parse(response.body)
-      expect(json).to eq(letter)
+      expect(json).to eq("phone": [
+                           "can't be blank",
+                           'is too short (minimum is 5 characters)'
+                         ])
     end
 
     it 'is invalid without a title' do
       letter = Letter.new(missing_title)
       post '/letters', params: letter
       json = JSON.parse(response.body)
-      expect(json).to eq(letter)
+      expect(json).to eq("title": [
+                           "can't be blank",
+                           'is too short (minimum is 50 characters)'
+                         ])
     end
 
     it 'is invalid without a description' do
       letter = Letter.new(missing_description)
       post '/letters', params: letter
       json = JSON.parse(response.body)
-      expect(json).to eq(letter)
+      expect(json).to eq("description": [
+                           "can't be blank",
+                           'is too short (minimum is 100 characters)'
+                         ])
     end
 
     it 'is invalid without an email' do
       letter = Letter.new(missing_email)
       post '/letters', params: letter
       json = JSON.parse(response.body)
-      expect(json).to eq(letter)
+      expect(json).to eq("email": [
+                           "can't be blank",
+                           'is invalid'
+                         ])
     end
 
     it 'is invalid with phone shorter than 5 symbols' do
       letter = Letter.new(invalid_phone)
       post '/letters', params: letter
       json = JSON.parse(response.body)
-      expect(json).to eq(letter)
+      expect(json).to eq("phone": [
+                           'is too short (minimum is 5 characters)'
+                         ])
     end
 
     it 'is invalid with title shorter than 50 symbols' do
       letter = Letter.new(invalid_title)
       post '/letters', params: letter
       json = JSON.parse(response.body)
-      expect(json).to eq(letter)
+      expect(json).to eq("title": [
+                           'is too short (minimum is 50 characters)'
+                         ])
     end
 
     it 'is invalid with description shorter than 100 symbols' do
       letter = Letter.new(invalid_description)
       post '/letters', params: letter
       json = JSON.parse(response.body)
-      expect(json).to eq(letter)
+      expect(json).to eq( "description": [
+                           'is too short (minimum is 100 characters)'
+                         ])
     end
 
     it 'is invalid with incorrect email' do
       letter = Letter.new(invalid_email)
       post '/letters', params: letter
       json = JSON.parse(response.body)
-      expect(json).to eq(letter)
+      expect(json).to eq("email": [
+                           'is invalid'
+                         ])
     end
   end
 end
+

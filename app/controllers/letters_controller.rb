@@ -1,20 +1,19 @@
 class LettersController < ApplicationController
-
-    def create 
-        @letter = Letter.new(letter_params)
-         respond_to do |format|
-           if @letter.save
-             MailWorker.perform_later(@letter)
-             format.json { render json: @letter, status: :created, location: @letter }
-           else
-             format.json { render json: @letter.errors, status: :unprocessable_entity }
-           end
-         end
+  include ActionController::MimeResponds
+  def create
+    @letter = Letter.new(letter_params)
+    if @letter.save
+      LetterMailer.with(letter: @letter).letter_email.deliver_now
+      render json: 'Successfully created', status: :created
+    else
+      render json: @letter.errors, status: :unprocessable_entity
     end
+  end
 
-    private 
+    private
 
-    def letter_params
-        params.require(:letter).permit(:name, :phone, :title, :description, :files, :email)
-    end
-end
+  def letter_params
+    params.require(:letter).permit(:name, :phone, :title, :description, :files, :email)
+  end
+  end
+
