@@ -10,10 +10,10 @@ class LettersController < ApplicationController
     end
   end
 
-    private
+  private
 
   def letter_params
-    params.require(:letter).permit(:name, :phone, :title, :description, :files, :email)
+    params.permit(:name, :phone, :title, :description, :files, :email)
   end
-  end
+end
 

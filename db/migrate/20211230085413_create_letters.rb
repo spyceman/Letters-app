@@ -5,7 +5,7 @@ class CreateLetters < ActiveRecord::Migration[7.0]
       t.string :phone
       t.string :title
       t.string :description
-      t.binary :files
+      t.string :files
       t.string :email
 
       t.timestamps
