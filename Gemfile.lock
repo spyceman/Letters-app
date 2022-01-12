@@ -135,6 +135,7 @@ GEM
       fog-core
       nokogiri (>= 1.5.11, < 2.0.0)
     formatador (0.3.0)
+    gcloud (0.0.7)
     globalid (1.0.0)
       activesupport (>= 5.0)
     google-apis-compute_v1 (0.23.0)
@@ -311,6 +312,7 @@ DEPENDENCIES
   debug
   dotenv (~> 2.7)
   fog-google (~> 1.17)
+  gcloud (~> 0.0.7)
   google-cloud-storage (~> 1.35)
   image_processing (~> 1.2)
   mail (~> 2.7)
