@@ -67,3 +67,5 @@ gem "google-cloud-storage", "~> 1.35"
 gem "fog-google", "~> 1.17"
 
 gem "gcloud", "~> 0.0.7"
+
+gem "telephone_number", "~> 1.4"
